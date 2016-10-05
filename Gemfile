@@ -19,6 +19,9 @@ gem 'simple_form'
 gem 'devise'
 # to see nice flash messages
 gem 'growlyflash'
+# add different roles for users
+gem "rolify"
+gem "cancancan"
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes

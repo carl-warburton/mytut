@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+p "Removing existing #{Role.all.count} roles"
+Role.destroy_all
+
+p "Creating 3 roles"
+roles = [:student, :tutor, :admin]
+roles.each do |role|
+  Role.create(name: role)
+end
