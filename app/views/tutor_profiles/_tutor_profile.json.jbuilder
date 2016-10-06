@@ -1,0 +1,2 @@
+json.extract! tutor_profile, :id, :description, :subject, :subject_year, :rates, :experience, :qualifications, :user_id, :created_at, :updated_at
+json.url tutor_profile_url(tutor_profile, format: :json)

@@ -1,0 +1,16 @@
+<%= simple_form_for(@tutor_profile) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :description %>
+    <%= f.input :subject %>
+    <%= f.input :subject_year %>
+    <%= f.input :rates %>
+    <%= f.input :experience %>
+    <%= f.input :qualifications %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<p>
+  <strong>Description:</strong>
+  <%= @tutor_profile.description %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @tutor_profile.subject %>
+</p>
+
+<p>
+  <strong>Subject year:</strong>
+  <%= @tutor_profile.subject_year %>
+</p>
+
+<p>
+  <strong>Rates:</strong>
+  <%= @tutor_profile.rates %>
+</p>
+
+<p>
+  <strong>Experience:</strong>
+  <%= @tutor_profile.experience %>
+</p>
+
+<p>
+  <strong>Qualifications:</strong>
+  <%= @tutor_profile.qualifications %>
+</p>
+
+<%= link_to 'Edit', edit_tutor_profile_path(@tutor_profile) %> |
+<%= link_to 'Back', tutor_profiles_path %>

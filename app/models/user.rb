@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :tutor_profile, dependent: :destroy
   after_create :assign_default_role
 
   rolify

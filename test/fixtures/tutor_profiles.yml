@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  subject: MyString
+  subject_year: MyString
+  rates: MyString
+  experience: MyText
+  qualifications: MyText
+  user: one
+
+two:
+  description: MyText
+  subject: MyString
+  subject_year: MyString
+  rates: MyString
+  experience: MyText
+  qualifications: MyText
+  user: two

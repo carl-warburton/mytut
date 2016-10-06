@@ -1,0 +1,1 @@
+json.array! @tutor_profiles, partial: 'tutor_profiles/tutor_profile', as: :tutor_profile
