@@ -12,8 +12,8 @@ class User < ApplicationRecord
   validates :email, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-  # assign role of student
-    def assign_default_role
-      self.add_role(:student) if self.roles.blank?
-    end
+  # assign default role
+  def assign_default_role
+    self.add_role(:student) if self.roles.blank?
+  end
 end
