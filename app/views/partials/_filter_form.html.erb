@@ -1,0 +1,22 @@
+<h2>Filter</h2>
+<div class="panel">
+  <div class="panel-body">
+
+    <%= simple_form_for :filter, method: :post, url: filter_tutor_profiles_path do |f| %>
+      <div class="form_inputs">
+        <% if @search %>
+          <%= f.input :subject, input_html: { value: @search[:subject]}, required: false %>
+          <%= f.input :subject_year, input_html: { value: @search[:subject_year]},required: false %>
+        <% else %>
+          <%= f.input :subject, required: false%>
+          <%= f.input :subject_year, required: false %>
+        <% end %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, value: "Filter", 'data-disable-with'=> "Searching...".html_safe %>
+      </div>
+  </div>
+</div>
+
+
+<% end %>

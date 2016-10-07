@@ -7,6 +7,8 @@
 
   <div class="form-inputs">
     <%= f.input :email, required: true, autofocus: true %>
+
+    <%= f.input :role_ids, label_html: {class:"col-sm-3"}, as: :select, collection: [['A Student', 1], ['A Tutor', 2]], label: "What are you ?" %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
     <%= f.input :password_confirmation, required: true %>
   </div>

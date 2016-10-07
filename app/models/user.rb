@@ -1,7 +1,5 @@
 class User < ApplicationRecord
   has_one :tutor_profile, dependent: :destroy
-  after_create :assign_default_role
-
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -12,8 +10,4 @@ class User < ApplicationRecord
   validates :email, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
-  # assign default role
-  def assign_default_role
-    self.add_role(:student) if self.roles.blank?
-  end
 end

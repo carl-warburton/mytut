@@ -1,0 +1,20 @@
+<h2>General Search</h2>
+<div class="panel">
+  <div class="panel-body">
+    
+    <%= simple_form_for :search, method: :get, url: search_tutor_profiles_path do |f| %>
+      <div class="form_inputs">
+        <% if @search %>
+          <%= f.input :search, input_html: { value: @search['search']} %>
+        <% else %>
+          <%= f.input :search, required: false%>
+        <% end %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, value: "Search", 'data-disable-with'=> "Searching...".html_safe %>
+      </div>
+  </div>
+</div>
+
+
+<% end %>
