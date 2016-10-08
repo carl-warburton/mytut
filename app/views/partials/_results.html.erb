@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-    <% if @tutor_profiles %>
+    <% if @tutor_profiles.present?  %>
       <% @tutor_profiles.each do |tutor_profile| %>
         <tr>
           <td><%= tutor_profile.user.first_name %> <%= tutor_profile.user.last_name %></td>
@@ -26,6 +26,8 @@
           <td><%= tutor_profile.qualifications %></td>
         </tr>
       <% end %>
+    <% else %>
+      <p>There are no tutors corresponding to your search</p>
     <% end %>
   </tbody>
 </table>

@@ -7,11 +7,12 @@ class TutorProfilesController < ApplicationController
   def search
     if params[:search]
       @search = params[:search]
-      @tutor_profiles = TutorProfile.where("description ILIKE ?", "%#{@search[:search]}%")
+      @users = User.with_role(:tutor)
+      @users = @users.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{@search[:search]}%", "%#{@search[:search]}%" )
+      @tutor_profiles = @users.map {|user| user.tutor_profile }
     else
       @tutor_profiles = []
     end
-
   end
 
   def filter

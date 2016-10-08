@@ -1,13 +1,13 @@
-<h2>General Search</h2>
+<h2>Search By Name</h2>
 <div class="panel">
   <div class="panel-body">
-    
+
     <%= simple_form_for :search, method: :get, url: search_tutor_profiles_path do |f| %>
       <div class="form_inputs">
         <% if @search %>
-          <%= f.input :search, input_html: { value: @search['search']} %>
+          <%= f.input :search, input_html: { value: @search[:search]}, required: true %>
         <% else %>
-          <%= f.input :search, required: false%>
+          <%= f.input :search, required: true%>
         <% end %>
       </div>
       <div class="form-actions">

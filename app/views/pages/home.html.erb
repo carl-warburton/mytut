@@ -5,13 +5,18 @@
 <div class="jumbotron">
   <h1>Welcome to MyTut</h1>
   <p>My Tut is a platform where tutors post their profile. Then students would be able to choose the tutors and book a tutoring session online.</p>
-  <p>
-    <%= link_to "Get Started - Sign in", new_user_registration_path, class: "btn btn-lg btn-primary" %>
-  </p>
-  <p>
-    <%= link_to "Create Tutor Profile", new_tutor_profile_path, class: "btn btn-lg btn-primary" %>
-  </p>
-  <p>
-    <%= link_to "Create Student Profile", new_user_registration_path, class: "btn btn-lg btn-primary" %>
-  </p>
+  <% if current_user %>
+    <% if current_user.has_role? :tutor %>
+      <p><%= link_to "Create Tutor Profile", new_tutor_profile_path, class: "btn btn-lg btn-primary" %></p>
+    <% elsif current_user.has_role? :student %>
+      <p><%= link_to "Create Student Profile", new_user_registration_path, class: "btn btn-lg btn-primary" %></p>
+    <%end %>
+  <% else %>
+    <h3>Get Started!</h3>
+    <p>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-lg btn-success" %>
+      <%= link_to "Log In", new_user_session_path, class:"btn btn-lg btn-primary"%>
+    </p>
+  <% end %>
+
 </div>
