@@ -2,7 +2,7 @@
 <div class="panel">
   <div class="panel-body">
 
-    <%= simple_form_for :filter, method: :post, url: filter_tutor_profiles_path do |f| %>
+    <%= simple_form_for :filter, method: :post, url: tutors_filter_path  do |f| %>
       <div class="form_inputs">
         <% if @search %>
           <%= f.input :subject, input_html: { value: @search[:subject] }, required: false %>

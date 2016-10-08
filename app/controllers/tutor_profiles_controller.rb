@@ -1,33 +1,9 @@
 class TutorProfilesController < ApplicationController
-  before_action :require_login, except: [:search, :filter]
+  before_action :require_login
   before_action :set_tutor_profile, only: [:show, :edit, :update, :destroy]
   before_action :check_profile_presence, only: [:new, :create]
 
-  # search tutors by name
-  # no need to render why??
-  def search
-    if params[:search]
-      @search = params[:search]
-      @users = User.with_role(:tutor)
-      @users = @users.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{@search[:search]}%", "%#{@search[:search]}%" )
-      @tutor_profiles = @users.map {|user| user.tutor_profile }
-    else
-      @tutor_profiles = []
-    end
-  end
 
-  # search tutors by subject and subject year
-  def filter
-    if params[:filter]
-      @search = params[:filter]
-      @search1 = TutorProfile.where("subject ILIKE ?", "%#{@search[:subject]}%")
-      @search2 = TutorProfile.where("subject_year ILIKE ?", "%#{@search[:subject_year]}%")
-      @tutor_profiles = @search1 & @search2
-    else
-      @tutor_profiles = []
-    end
-    render 'pages/tutors'
-  end
   # GET /tutor_profiles
   # GET /tutor_profiles.json
   def index
@@ -102,7 +78,7 @@ class TutorProfilesController < ApplicationController
           format.html { redirect_to new_user_session_url, notice: 'You must be logged in to access this section' }
           format.json { head :no_content }
         end
-      end
+      end  # no need to render why??
     end
 
     # a user can not create more that one profile

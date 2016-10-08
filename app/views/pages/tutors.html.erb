@@ -1,4 +1,8 @@
 <h1>Search of Tutors</h1>
 <%= render 'partials/search_form' %>
 <%= render 'partials/filter_form' %>
-<%= render 'partials/results' %>
+<% if @tutor_profiles.present?  %>
+  <%= render 'partials/results' %>
+<% else %>
+    <p>There are no tutors corresponding to your search</p>
+<% end %>

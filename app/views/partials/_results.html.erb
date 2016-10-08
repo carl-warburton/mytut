@@ -1,33 +1,32 @@
-<h2>Results</h2>
 
-<table>
-  <thead>
-    <tr>
-      <th>Tutor Name</th>
-      <th>Description</th>
-      <th>Subject</th>
-      <th>Subject year</th>
-      <th>Rates</th>
-      <th>Experience</th>
-      <th>Qualifications</th>
-    </tr>
-  </thead>
+<div class="panel panel-primary">
+  <div class="panel-heading">Tutors</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Tutor Name</th>
+            <th>Description</th>
+            <th>Subject</th>
+            <th>Subject year</th>
+            <th>Rates</th>
+            <th>Experience</th>
+            <th>Qualifications</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% if @tutor_profiles.present?  %>
-      <% @tutor_profiles.each do |tutor_profile| %>
-        <tr>
-          <td><%= tutor_profile.user.first_name %> <%= tutor_profile.user.last_name %></td>
-          <td><%= tutor_profile.description %></td>
-          <td><%= tutor_profile.subject %></td>
-          <td><%= tutor_profile.subject_year %></td>
-          <td><%= tutor_profile.rates %></td>
-          <td><%= tutor_profile.experience %></td>
-          <td><%= tutor_profile.qualifications %></td>
-        </tr>
-      <% end %>
-    <% else %>
-      <p>There are no tutors corresponding to your search</p>
-    <% end %>
-  </tbody>
-</table>
+        <tbody>
+
+            <% @tutor_profiles.each do |tutor_profile| %>
+              <tr>
+                <td><%= tutor_profile.user.first_name %> <%= tutor_profile.user.last_name %></td>
+                <td><%= tutor_profile.description %></td>
+                <td><%= tutor_profile.subject %></td>
+                <td><%= tutor_profile.subject_year %></td>
+                <td><%= tutor_profile.rates %></td>
+                <td><%= tutor_profile.experience %></td>
+                <td><%= tutor_profile.qualifications %></td>
+              </tr>
+            <% end %>
+
+        </tbody>
+      </table>
