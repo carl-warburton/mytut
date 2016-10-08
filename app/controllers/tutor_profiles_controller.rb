@@ -1,9 +1,10 @@
 class TutorProfilesController < ApplicationController
-  before_action :require_login, except: [:search]
+  before_action :require_login, except: [:search, :filter]
   before_action :set_tutor_profile, only: [:show, :edit, :update, :destroy]
   before_action :check_profile_presence, only: [:new, :create]
 
-
+  # search tutors by name
+  # no need to render why??
   def search
     if params[:search]
       @search = params[:search]
@@ -15,6 +16,7 @@ class TutorProfilesController < ApplicationController
     end
   end
 
+  # search tutors by subject and subject year
   def filter
     if params[:filter]
       @search = params[:filter]
@@ -24,7 +26,7 @@ class TutorProfilesController < ApplicationController
     else
       @tutor_profiles = []
     end
-    render 'search'
+    render 'pages/tutors'
   end
   # GET /tutor_profiles
   # GET /tutor_profiles.json

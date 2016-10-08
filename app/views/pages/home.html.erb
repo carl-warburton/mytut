@@ -3,8 +3,8 @@
 
 <!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
-  <h1>Welcome to MyTut</h1>
-  <p>My Tut is a platform where tutors post their profile. Then students would be able to choose the tutors and book a tutoring session online.</p>
+  <h1>Welcome <%= current_user.first_name.capitalize if current_user %></h1>
+  <p>My Tut is a platform where tutors post their profiles. Then students are able to choose the tutors and book a tutoring session online.</p>
   <% if current_user %>
     <% if current_user.has_role? :tutor %>
       <p><%= link_to "Create Tutor Profile", new_tutor_profile_path, class: "btn btn-lg btn-primary" %></p>
