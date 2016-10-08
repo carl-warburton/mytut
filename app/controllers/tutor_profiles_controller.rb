@@ -95,13 +95,11 @@ class TutorProfilesController < ApplicationController
 
     # if not logged in the user is redirected to the log in page
     def require_login
-      unless user_signed_in?
-        # respond_to do |format|
-        #   format.html { redirect_to new_user_session_url, notice: 'Tutor profile was successfully destroyed.' }
-        #   format.json { head :no_content }
-        # end
-        flash[:info] = "You must be logged in to access this section"
-        redirect_to new_user_session_url
+      respond_to do |format|
+        unless user_signed_in?
+          format.html { redirect_to new_user_session_url, notice: 'You must be logged in to access this section' }
+          format.json { head :no_content }
+        end
       end
     end
 

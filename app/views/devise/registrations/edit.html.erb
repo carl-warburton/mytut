@@ -8,6 +8,8 @@
   <div class="form-inputs">
     <%= f.input :first_name, required: false %>
     <%= f.input :last_name, required: false %>
+    <%= f.association :roles, label_html: {class: "col-sm-3"}, as: :check_boxes, collection: [Role.find(1), Role.find(2)] %>
+
     <%= f.input :date_of_birth, wrapper: :horizontal_form, as: :date, start_year: Date.today.year,
                             end_year: Date.today.year - 70, discard_day: false,
                             order: [:day, :month, :year], input_html: {class: 'inline'}%>
