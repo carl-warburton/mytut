@@ -73,12 +73,12 @@ class TutorProfilesController < ApplicationController
 
     # if not logged in the user is redirected to the log in page
     def require_login
-      respond_to do |format|
-        unless user_signed_in?
+      unless user_signed_in?
+        respond_to do |format|
           format.html { redirect_to new_user_session_url, notice: 'You must be logged in to access this section' }
           format.json { head :no_content }
         end
-      end  # no need to render why??
+      end
     end
 
     # a user can not create more that one profile

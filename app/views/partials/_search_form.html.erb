@@ -1,13 +1,16 @@
-<h2>Search By Name</h2>
 <div class="panel">
   <div class="panel-body">
 
     <%= simple_form_for :search, method: :post, url: tutors_path do |f| %>
       <div class="form_inputs">
         <% if @search %>
-          <%= f.input :search, input_html: { value: @search[:search]}, required: true %>
+          <%= f.input :name, label: "Name",input_html: { value: @search[:name]}, required: true %>
+           <%= f.input :subject, input_html: { value: @search[:subject] }, required: false %>
+           <%= f.input :subject_year, input_html: { value: @search[:subject_year] },required: false %>
         <% else %>
-          <%= f.input :search, required: true%>
+          <%= f.input :name, required: true%>
+          <%= f.input :subject, required: false%>
+          <%= f.input :subject_year, required: false %>
         <% end %>
       </div>
       <div class="form-actions">

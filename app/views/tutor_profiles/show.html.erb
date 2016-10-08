@@ -1,10 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <%= @tutor_profile.user.first_name.capitalize%> <%=@tutor_profile.user.last_name.capitalize%>
+  </div>
+  <div class="panel-body">
 <p>
   <strong>Description:</strong>
   <%= @tutor_profile.description %>
 </p>
 
 <p>
-  <strong>Subject:</strong>
+  <strong>Subjects:</strong>
   <%= @tutor_profile.subject %>
 </p>
 
@@ -28,5 +33,16 @@
   <%= @tutor_profile.qualifications %>
 </p>
 
-<%= link_to 'Edit', edit_tutor_profile_path(@tutor_profile) %> |
-<%= link_to 'Back', tutor_profiles_path %>
+<p>
+  <strong>Phone Number:</strong>
+  <%= @tutor_profile.user.phone_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @tutor_profile.user.email %>
+</p>
+
+<%= link_to 'Back', tutors_path %>
+</div>
+</div>

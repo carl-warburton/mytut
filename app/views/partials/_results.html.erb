@@ -5,12 +5,12 @@
         <thead>
           <tr>
             <th>Tutor Name</th>
-            <th>Description</th>
             <th>Subject</th>
-            <th>Subject year</th>
+            <th>Level</th>
             <th>Rates</th>
             <th>Experience</th>
             <th>Qualifications</th>
+            <th colspan="1"></th>
           </tr>
         </thead>
 
@@ -18,15 +18,17 @@
 
             <% @tutor_profiles.each do |tutor_profile| %>
               <tr>
-                <td><%= tutor_profile.user.first_name %> <%= tutor_profile.user.last_name %></td>
-                <td><%= tutor_profile.description %></td>
+                <td><%= tutor_profile.user.first_name.capitalize %> <%= tutor_profile.user.last_name %></td>
                 <td><%= tutor_profile.subject %></td>
                 <td><%= tutor_profile.subject_year %></td>
                 <td><%= tutor_profile.rates %></td>
                 <td><%= tutor_profile.experience %></td>
                 <td><%= tutor_profile.qualifications %></td>
+                <td><%= link_to "More Details", tutor_profile%>
               </tr>
             <% end %>
 
         </tbody>
       </table>
+    </div>
+</div>
