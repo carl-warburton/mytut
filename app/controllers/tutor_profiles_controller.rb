@@ -13,6 +13,7 @@ class TutorProfilesController < ApplicationController
   # GET /tutor_profiles/1
   # GET /tutor_profiles/1.json
   def show
+    @tutor_booking = TutorBooking.new
   end
 
   # GET /tutor_profiles/new

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tutor profile:</strong>
+  <%= @tutor_booking.tutor_profile %>
+</p>
+
+<p>
+  <strong>Student profile:</strong>
+  <%= @tutor_booking.student_profile %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @tutor_booking.date %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @tutor_booking.start_time %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @tutor_booking.end_time %>
+</p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @tutor_booking.approved %>
+</p>
+
+<%= link_to 'Edit', edit_tutor_booking_path(@tutor_booking) %> |
+<%= link_to 'Back', tutor_bookings_path %>
