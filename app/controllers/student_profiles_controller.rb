@@ -1,4 +1,5 @@
 class StudentProfilesController < ApplicationController
+  before_action :require_login
   before_action :set_student_profile, only: [:show, :edit, :update, :destroy]
   before_action :check_student_profile, only: [:new, :create]
 
@@ -77,5 +78,14 @@ class StudentProfilesController < ApplicationController
     # A student can only create one student profile
     def check_student_profile
       redirect_to student_profile_url(current_user.student_profile) if current_user.student_profile
+    end
+
+    def require_login
+      unless current_user
+        respond_to do |format|
+          format.html { redirect_to new_user_session_url, notice: 'You must be logged in to access this section' }
+          format.json { head :no_content }
+        end
+      end
     end
 end
