@@ -17,6 +17,7 @@ class PagesController < ApplicationController
   end
 
   def tutors
+    @tutor_profiles = TutorProfile.all
   end
 
   def home

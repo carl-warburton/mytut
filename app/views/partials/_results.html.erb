@@ -24,7 +24,7 @@
                 <td><%= tutor_profile.rates %></td>
                 <td><%= tutor_profile.experience %></td>
                 <td><%= tutor_profile.qualifications %></td>
-                <td><%= link_to "More Details", tutor_profile%>
+                <td><%= link_to "More Details", tutor_profile_path(tutor_profile.id) %>
               </tr>
             <% end %>
 

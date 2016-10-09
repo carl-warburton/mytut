@@ -10,6 +10,4 @@ class Role < ApplicationRecord
             :allow_nil => true
 
   scopify
-
-  ROLES = { 'a Student' => Role.find(1), 'a Tutor' =>  Role.find(2) }
 end

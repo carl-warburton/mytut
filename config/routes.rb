@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :student_profiles
   resources :tutor_profiles do
   end
   devise_for :users

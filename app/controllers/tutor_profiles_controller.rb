@@ -1,7 +1,7 @@
 class TutorProfilesController < ApplicationController
   before_action :require_login
   before_action :set_tutor_profile, only: [:show, :edit, :update, :destroy]
-  before_action :check_profile_presence, only: [:new, :create]
+  before_action :check_tutor_profile, only: [:new, :create]
 
 
   # GET /tutor_profiles
@@ -73,7 +73,9 @@ class TutorProfilesController < ApplicationController
 
     # if not logged in the user is redirected to the log in page
     def require_login
-      unless user_signed_in?
+      unless current_user
+        flash[:info] = 'You must be logged in to access this section'
+        redirect_to new_user_session_url,
         respond_to do |format|
           format.html { redirect_to new_user_session_url, notice: 'You must be logged in to access this section' }
           format.json { head :no_content }
@@ -82,8 +84,8 @@ class TutorProfilesController < ApplicationController
     end
 
     # a user can not create more that one profile
-    def check_profile_presence
-      redirect_to tutor_profile_url(current_user) if current_user.tutor_profile
+    def check_tutor_profile
+      redirect_to tutor_profile_url(current_user.tutor_profile) if current_user.tutor_profile
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def tutor_profile_params

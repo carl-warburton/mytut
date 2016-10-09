@@ -35,18 +35,25 @@ user4 = User.create(email:"fourth@example.com", password:@password, password_con
 user4.add_role :student
 # second student
 user5 = User.create(email:"fifth@example.com", password:@password, password_confirmation:@password,
-          first_name:"third", last_name:"Xavier", phone_number: "5"*10 )
+          first_name:"fifth", last_name:"Xavier", phone_number: "5"*10 )
 user5.add_role :student
 
-# first tutor profile
+# user2 tutor profile
 TutorProfile.create( description: "I have been passionate about teaching for the past 20 years. I know everything. You can try to test me.",
                             subject: "Mathematics, Physics", subject_year: "10, 11 and 12",
                             rates: "$30/hr", experience: "Teaching at all universities in the world.",
                             qualifications: "10 PHDs: 5 in Physics, 4 in Mathematics and 1 in Chemistry", user_id: 2)
 
-# second tutor profile
-TutorProfile.create( description: "My name is Third. I can teach English at different levels.
-                            Passionate and would do all I can so that you reach your goals",
+# user3 tutor profile
+TutorProfile.create( description: "My name is Third. I can teach English at different levels. I am passionate and would do all I can so that you reach your goals",
                             subject: "English", subject_year: "7,8,9,10,11,12",
                             rates: "$30/hr", experience: "Teaching to more than 50 highschool students.",
                             qualifications: "Bachelor in Arts and Education", user_id: 3)
+
+# user4 student profile
+StudentProfile.create( description: "I am a year 10 highschool student at CoderFactory. I need assistance in Physics and Chemistry",
+                        subjects: "Physics and Chemistry", year: "10", user_id: 4)
+
+# user5 student profile
+StudentProfile.create( description: "I am a year 12 highschool student. I need assistance in Mathematics. HSC is drawing near and I need help",
+                        subjects: "Mathematics", year: "12", user_id: 5)
