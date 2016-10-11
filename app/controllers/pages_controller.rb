@@ -30,6 +30,10 @@ class PagesController < ApplicationController
 
     # find all the bookings request to the current_user (tutor)
     @tutorbookings = TutorBooking.where(tutor_id: current_user.id)
+    # find all the bookings that are not approved
+    @tutorbookings_not_approved = @tutorbookings.where(approved: false)
+    # all the bookings that are approved
+    @tutorbookings_approved = @tutorbookings - @tutorbookings_not_approved
     
   end
 

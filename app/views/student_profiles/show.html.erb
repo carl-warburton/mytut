@@ -15,4 +15,14 @@
   <%= @student_profile.year %>
 </p>
 
+<p>
+  <strong>Phone number:</strong>
+  <%= @student_profile.user.phone_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student_profile.user.email %>
+</p>
+
 <%= link_to 'Back', student_profiles_path %>
