@@ -22,7 +22,7 @@
 
         <p>
           <strong>Rates:</strong>
-          <%= @tutor_profile.rates %>
+          <%= number_to_currency(@tutor_profile.rates, unit:"$/hr", format:"%n %u") %>
         </p>
 
         <p>

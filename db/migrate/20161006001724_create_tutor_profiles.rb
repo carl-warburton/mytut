@@ -4,7 +4,7 @@ class CreateTutorProfiles < ActiveRecord::Migration[5.0]
       t.text :description
       t.string :subject
       t.string :subject_year
-      t.string :rates
+      t.decimal :rates, precision: 8, scale: 2
       t.text :experience
       t.text :qualifications
       t.references :user, foreign_key: true

@@ -76,8 +76,13 @@ class TutorBookingsController < ApplicationController
 
     def require_login
       unless current_user
-        flash[:alert] = "You must be logged in to access this section"
+        flash[:alert] = "You must be logged in to access this section."
         redirect_to new_user_session_url
+      end
+
+      unless current_user.has_role? :student
+        flash[:alert] = "You must be a student to request a booking."
+        redirect_to root_path
       end
     end
 end

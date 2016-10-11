@@ -54,12 +54,12 @@ ActiveRecord::Schema.define(version: 20161010014212) do
     t.text     "description"
     t.string   "subject"
     t.string   "subject_year"
-    t.string   "rates"
+    t.decimal  "rates",          precision: 8, scale: 2
     t.text     "experience"
     t.text     "qualifications"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.index ["user_id"], name: "index_tutor_profiles_on_user_id", using: :btree
   end
 
