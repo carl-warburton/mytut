@@ -75,12 +75,8 @@ class TutorProfilesController < ApplicationController
     # if not logged in the user is redirected to the log in page
     def require_login
       unless current_user
-        #flash[:info] = 'You must be logged in to access this section'
-        #redirect_to new_user_session_url
-        respond_to do |format|
-          format.html { redirect_to new_user_session_url, notice: 'You must be logged in to access this section' }
-          format.json { head :no_content }
-        end
+        flash[:alert] = "You must be logged in to access this section"
+        redirect_to new_user_session_url
       end
     end
 

@@ -17,7 +17,7 @@ class TutorBookingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create tutor_booking" do
     assert_difference('TutorBooking.count') do
-      post tutor_bookings_url, params: { tutor_booking: { approved: @tutor_booking.approved, date: @tutor_booking.date, end_time: @tutor_booking.end_time, start_time: @tutor_booking.start_time, student_profile_id: @tutor_booking.student_profile_id, tutor_profile_id: @tutor_booking.tutor_profile_id } }
+      post tutor_bookings_url, params: { tutor_booking: { date: @tutor_booking.date, end_time: @tutor_booking.end_time, start_time: @tutor_booking.start_time, user_id: @tutor_booking.user_id, user_id: @tutor_booking.user_id } }
     end
 
     assert_redirected_to tutor_booking_url(TutorBooking.last)
@@ -34,7 +34,7 @@ class TutorBookingsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update tutor_booking" do
-    patch tutor_booking_url(@tutor_booking), params: { tutor_booking: { approved: @tutor_booking.approved, date: @tutor_booking.date, end_time: @tutor_booking.end_time, start_time: @tutor_booking.start_time, student_profile_id: @tutor_booking.student_profile_id, tutor_profile_id: @tutor_booking.tutor_profile_id } }
+    patch tutor_booking_url(@tutor_booking), params: { tutor_booking: { date: @tutor_booking.date, end_time: @tutor_booking.end_time, start_time: @tutor_booking.start_time, user_id: @tutor_booking.user_id, user_id: @tutor_booking.user_id } }
     assert_redirected_to tutor_booking_url(@tutor_booking)
   end
 

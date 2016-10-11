@@ -19,23 +19,23 @@ end
 
 #admin
 user1 = User.create(email:"first@example.com", password:@password, password_confirmation:@password,
-          first_name:"first", last_name:"Admin", phone_number: "1"*10 )
+          first_name:"First", last_name:"Admin", phone_number: "1"*10 )
 user1.add_role :admin
 # first tutor
 user2= User.create(email:"second@example.com", password:@password, password_confirmation:@password,
-          first_name:"second", last_name:"Smith", phone_number: "2"*10 )
+          first_name:"Second", last_name:"Smith", phone_number: "2"*10 )
 user2.add_role :tutor
 # second tutor
 user3 = User.create(email:"third@example.com", password:@password, password_confirmation:@password,
-          first_name:"third", last_name:"Jones", phone_number: "3"*10 )
+          first_name:"Third", last_name:"Jones", phone_number: "3"*10 )
 user3.add_role :tutor
 # first student
 user4 = User.create(email:"fourth@example.com", password:@password, password_confirmation:@password,
-          first_name:"fourth", last_name:"Jess", phone_number: "4"*10 )
+          first_name:"Fourth", last_name:"Jess", phone_number: "4"*10 )
 user4.add_role :student
 # second student
 user5 = User.create(email:"fifth@example.com", password:@password, password_confirmation:@password,
-          first_name:"fifth", last_name:"Xavier", phone_number: "5"*10 )
+          first_name:"Fifth", last_name:"Xavier", phone_number: "5"*10 )
 user5.add_role :student
 
 # user2 tutor profile

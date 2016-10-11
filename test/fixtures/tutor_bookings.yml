@@ -1,17 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  tutor_profile: one
-  student_profile: one
-  date: 2016-10-09
-  start_time: 2016-10-09 21:52:55
-  end_time: 2016-10-09 21:52:55
-  approved: false
+  user: one
+  user: one
+  date: 2016-10-10
+  start_time: 2016-10-10 12:42:12
+  end_time: 2016-10-10 12:42:12
 
 two:
-  tutor_profile: two
-  student_profile: two
-  date: 2016-10-09
-  start_time: 2016-10-09 21:52:55
-  end_time: 2016-10-09 21:52:55
-  approved: false
+  user: two
+  user: two
+  date: 2016-10-10
+  start_time: 2016-10-10 12:42:12
+  end_time: 2016-10-10 12:42:12
