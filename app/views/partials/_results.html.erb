@@ -1,14 +1,14 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">Tutors</div>
-      <table class="table">
+    <div class="panel-body">
+      <table class="table datatable responsive no-wrap">
         <thead>
           <tr>
             <th>Tutor Name</th>
             <th>Subject</th>
-            <th>Level</th>
+            <th>Year</th>
             <th>Rates</th>
-            <th>Experience</th>
             <th>Qualifications</th>
             <th colspan="1"></th>
           </tr>
@@ -22,7 +22,6 @@
                 <td><%= tutor_profile.subject %></td>
                 <td><%= tutor_profile.subject_year %></td>
                 <td><%= number_to_currency(tutor_profile.rates, unit:"$/hr", format:"%n %u") %></td>
-                <td><%= tutor_profile.experience %></td>
                 <td><%= tutor_profile.qualifications %></td>
                 <td><%= link_to "More Details", tutor_profile_path(tutor_profile.id), class:"btn btn-sm btn-info" %>
               </tr>
@@ -31,4 +30,5 @@
         </tbody>
       </table>
     </div>
+  </div>
 </div>

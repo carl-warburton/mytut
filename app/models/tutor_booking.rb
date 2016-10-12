@@ -13,4 +13,19 @@ class TutorBooking < ApplicationRecord
     self.update_attribute(:approved, false)
   end
 
+  # the rate in $/hr of the booking
+  def rates
+    self.tutor.tutor_profile.rates
+  end
+
+  # the length of the tutoring bookings in hour
+  def length
+    (self.end_time - self.start_time) / 3600
+  end
+
+  # find the price of the session rounded to the nearest 0.05
+  def price
+    ((self.rates * self.length) * 20).round.to_f / 20
+  end
+
 end

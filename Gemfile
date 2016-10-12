@@ -25,6 +25,8 @@ gem "rolify"
 gem "cancancan"
 # add payment method
 gem "stripe"
+# add datatables
+gem 'jquery-datatables-rails', '~> 3.4.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
