@@ -28,4 +28,14 @@ class TutorBooking < ApplicationRecord
     ((self.rates * self.length) * 20).round.to_f / 20
   end
 
+  # find tutor full name of booking
+  def tutor_name
+    self.tutor.first_name + " " + self.tutor.last_name
+  end
+
+  # find student full name of booking
+  def student_name
+    self.student.first_name + " " + self.student.last_name
+  end
+
 end

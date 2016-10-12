@@ -8,14 +8,14 @@
   <% if current_user %>
     <% if current_user.has_role? :tutor %>
       <% if current_user.tutor_profile %>
-        <%= link_to "Get Started and Teach", "#", class: "btn btn-lg btn-primary"%>
+        <%= link_to "Your Desktop and Teach", desktop_path, class: "btn btn-lg btn-primary"%>
       <% else %>
         <p><%= link_to "Create Tutor Profile", new_tutor_profile_path, class: "btn btn-lg btn-primary" %></p>
       <% end %>
     <% end %>
     <% if current_user.has_role? :student %>
       <% if current_user.student_profile %>
-        <%= link_to "Get Started and Learn", "#", class: "btn btn-lg btn-primary"%>
+        <%= link_to "Your Desktop and Learn", desktop_path , class: "btn btn-lg btn-primary"%>
       <% else %>
         <p><%= link_to "Create Student Profile", new_student_profile_path, class: "btn btn-lg btn-primary" %></p>
       <% end %>

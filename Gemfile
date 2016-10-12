@@ -24,7 +24,7 @@ gem "rolify"
 # add authorisation
 gem "cancancan"
 # add payment method
-gem "stripe"
+gem "stripe", git: 'https://github.com/stripe/stripe-ruby'
 # add datatables
 gem 'jquery-datatables-rails', '~> 3.4.0'
 # Use CoffeeScript for .coffee assets and views

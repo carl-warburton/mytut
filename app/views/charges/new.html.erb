@@ -1,18 +1,70 @@
-<%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
+<h1>Tutoring Session</h1>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p>You are <strong><%= @booking.student_name %></strong>.</p>
+        <p>You are booking a tutoring session with <strong><%= @booking.tutor_name %></strong></p>
+        <p>on <strong><%= @booking.date.strftime("%d %B %y") %></strong></p>
+        <p>starting at <strong><%= @booking.start_time.strftime('%H:%M')%></strong>
+          and finishing at <strong><%= @booking.end_time.strftime("%H:%M")%></strong><p>
+        <p>
       </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: $5.00</span>
-    </label>
-  </article>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <p class="heading">Payment</p>
+        <p>Length of session: <strong><%=@booking.length%> Hours</strong></p>
+        <p>Rate: <strong><%=number_to_currency(@booking.rates, unit:"$/hr", format:"%n %u") %> </strong></p>
+        <p><%=@booking.length%> x <%=number_to_currency(@booking.rates, unit:"$/hr", format:"%n %u")%></p>
+        <label>
+          <span class="heading">Amount: <%= number_to_currency(@booking.price, unit:"$")%></span>
+        </label>
+        <%= form_tag charges_path, id:"stripeForm" do %>
+          <article>
+            <% if flash[:error].present? %>
+              <div id="error_explanation">
+                <p><%= flash[:error] %></p>
+              </div>
+            <% end %>
+          </article>
+          <button id="stripe-button" class="btn btn-primary">Pay Now</button>
+             <%= hidden_field_tag 'stripeToken' %>
+             <%= hidden_field_tag 'stripeEmail' %>
+             <%= hidden_field_tag 'stripeAmount' %>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="500"
-          data-locale="auto"></script>
-<% end %>
+             <script>
+                var handler = StripeCheckout.configure({
+                  key: "<%= Rails.configuration.stripe[:publishable_key] %>",
+                  token: function (token, args) {
+                    $("#stripeToken").val(token.id);
+                    $("#stripeEmail").val(token.email);
+                    $("#stripeAmount").val(<%= @booking.price * 100 %>);
+                    // $("#stripeToken").value = token.id;
+                    // $("#stripeEmail").value = token.email;
+                    // $("#stripeAmount").value = <%= @booking.price * 100 %>;
+                    $("#stripeForm").submit();
+                  }
+                });
+
+                $('#stripe-button').on('click', function (e) {
+                  // Open Checkout with further options
+                  handler.open({
+                    name: '<%= @booking.student_name %>',
+                    description: 'Tutoring session with <%= @booking.tutor_name %>',
+                    amount: <%= @booking.price * 100 %>
+                  });
+                e.preventDefault();
+                });
+
+                $(window).on('popstate', function() {
+                  handler.close();
+                });
+              </script>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

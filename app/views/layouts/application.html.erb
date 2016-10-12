@@ -9,18 +9,6 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= growlyflash_static_notices %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script>
-    $(document).ready(function(){
-        $('.datatable').DataTable({
-          responsive: true
-          // ajax: ...,
-         // autoWidth: false,
-         // pagingType: 'full_numbers',
-         // processing: true,
-         // serverSide: true,
-        });
-    });
-    </script>
   </head>
 
   <body>
@@ -30,5 +18,13 @@
       <%= yield %>
       <%= debug(params) if Rails.env.development? %>
     </div>
+    <script>
+    $(document).ready(function(){
+        $('.datatable').DataTable({
+          responsive: true
+        });
+    });
+    </script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
   </body>
 </html>

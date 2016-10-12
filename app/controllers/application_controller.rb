@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   # use growlyflash
   use_growlyflash
 
-
   protected
 
   def configure_permitted_parameters
