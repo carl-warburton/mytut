@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-
+  mount_uploader :avatar, AvatarUploader
   rolify
 
   has_one :tutor_profile, dependent: :destroy

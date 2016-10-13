@@ -31,7 +31,13 @@
   vertical-align: middle;
 }
 
+/* display checkboxes inline */
 .checkbox {
   display: inline-block;
   margin-right: 15px;
+}
+
+/* style for profile pic */
+.profile_pic {
+  width: 100%;
 }

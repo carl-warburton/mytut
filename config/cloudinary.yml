@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: liptonite24
+  api_key: '755253528238746'
+  api_secret: MbZ7MY7p9CcivmeIKkHHb-1eOQM
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: liptonite24
+  api_key: '755253528238746'
+  api_secret: MbZ7MY7p9CcivmeIKkHHb-1eOQM
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: liptonite24
+  api_key: '755253528238746'
+  api_secret: MbZ7MY7p9CcivmeIKkHHb-1eOQM
+  enhance_image_tag: true
+  static_image_support: false

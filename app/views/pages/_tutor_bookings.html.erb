@@ -32,9 +32,9 @@
                   <td><%= human_boolean(booking.approved) %></td>
                   <td>
                     <% if booking.approved %>
-                      <%= link_to "Disapproved", bookings_url(booking: booking.id), method: :post, class:"btn btn-sm btn-danger" %>
+                      <%= link_to "Disapprove", bookings_url(booking: booking.id), method: :post, class:"btn btn-sm btn-danger" %>
                     <% else %>
-                      <%= link_to "Approved", bookings_url(booking: booking.id), method: :post, class:"btn btn-sm btn-success" %>
+                      <%= link_to "Approve", bookings_url(booking: booking.id), method: :post, class:"btn btn-sm btn-success" %>
                     <% end %>
                   </td>
                 </tr>
