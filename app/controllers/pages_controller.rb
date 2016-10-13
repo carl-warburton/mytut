@@ -21,13 +21,11 @@ class PagesController < ApplicationController
     @tutor_profiles = TutorProfile.all
   end
 
-  def bookings
+  def requests
     # find all the bookings mades by the current user(student)
     @studentbookings = TutorBooking.where(student_id: current_user.id)
-
     # find all the bookings request to the current_user (tutor)
     @tutorbookings = TutorBooking.where(tutor_id: current_user.id)
-
   end
 
   def approval
@@ -37,6 +35,9 @@ class PagesController < ApplicationController
       @tutor_booking.update_attribute(:approved, true)
     end
     redirect_to bookings_url
+  end
+
+  def bookings
   end
 
   def home

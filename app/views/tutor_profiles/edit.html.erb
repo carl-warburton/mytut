@@ -1,7 +1,10 @@
-
-<h1>Change your Tutor Profile</h1>
-
-  <%= render 'form', tutor_profile: @tutor_profile %>
-
-  <%= link_to 'Show', @tutor_profile %> |
-  <%= link_to 'Back', tutor_profiles_path %>
+<div class="row">
+  <div class="col-sm-3">
+    <h3>Edit Tutor Profile</h3>
+  </div>
+  <div class="col-sm-9">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render 'form', tutor_profile: @tutor_profile %>
+      </div>
+  </div>

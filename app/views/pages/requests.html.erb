@@ -1,0 +1,9 @@
+<h1>Requests</h1>
+
+<% if current_user.has_role? :student %>
+  <%= render 'student_bookings' %>
+<% end %>
+
+<% if current_user.has_role? :tutor %>
+  <%= render 'tutor_bookings' %>
+<% end %>
