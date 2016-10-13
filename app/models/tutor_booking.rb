@@ -24,7 +24,7 @@ class TutorBooking < ApplicationRecord
   end
 
   # find the price of the session rounded to the nearest 0.05
-  def price
+  def cost
     ((self.rates * self.length) * 20).round.to_f / 20
   end
 

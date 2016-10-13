@@ -1,9 +1,9 @@
 <h1>Desktop</h1>
 
 <% if current_user.has_role? :student %>
-  <%= render 'student_desktop' %>
+  <%= render 'student_bookings' %>
 <% end %>
 
 <% if current_user.has_role? :tutor %>
-  <%= render 'tutor_desktop' %>
+  <%= render 'tutor_bookings' %>
 <% end %>

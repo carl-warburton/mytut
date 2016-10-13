@@ -1,0 +1,47 @@
+<h2>Tutoring Requests:</h2>
+<% if @tutorbookings.empty? %>
+  <p>No students have requested your knowledge yet.</p>
+<% else %>
+  <div class="panel panel-primary">
+    <div class="panel-heading">Bookings</div>
+      <div class="panel-body">
+        <table class="table datatable responsive no-wrap">
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Date</th>
+              <th>Start time</th>
+              <th>End time</th>
+              <th>Cost</th>
+              <th>Approved</th>
+              <th colspan="1"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+              <% @tutorbookings.each do |booking| %>
+                <tr>
+                  <td>
+                    <%= booking.student_name %>
+                    <%= link_to "More Details", student_profile_url(booking.student.student_profile), class:"btn btn-sm btn-info" %>
+                  </td>
+                  <td><%= booking.date.strftime("%d %B %y") %></td>
+                  <td><%= booking.start_time.strftime("%H:%M") %></td>
+                  <td><%= booking.end_time.strftime("%H:%M") %></td>
+                  <td><%= number_to_currency(booking.cost, unit:"$") %></td>
+                  <td><%= human_boolean(booking.approved) %></td>
+                  <td>
+                    <% if booking.approved %>
+                      <%= link_to "Disapproved", bookings_url(booking: booking.id), method: :post, class:"btn btn-sm btn-danger" %>
+                    <% else %>
+                      <%= link_to "Approved", bookings_url(booking: booking.id), method: :post, class:"btn btn-sm btn-success" %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+<% end %>

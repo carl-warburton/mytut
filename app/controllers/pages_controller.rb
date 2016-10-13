@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  before_action :require_login, only: [:desktop]
+  before_action :require_login, only: [:bookings, :approval]
+  before_action :require_tutor, only: [:approval]
   # search tutors by name
   def search
     if params[:search]
@@ -20,31 +21,22 @@ class PagesController < ApplicationController
     @tutor_profiles = TutorProfile.all
   end
 
-  def desktop
+  def bookings
     # find all the bookings mades by the current user(student)
     @studentbookings = TutorBooking.where(student_id: current_user.id)
-    # find all the studentbookings that are not approved
-    @studentbookings_not_approved = @studentbookings.where(approved: false)
-    # all studentbookings that are approved
-    @studentbookings_approved = @studentbookings - @studentbookings_not_approved
 
     # find all the bookings request to the current_user (tutor)
     @tutorbookings = TutorBooking.where(tutor_id: current_user.id)
-    # find all the bookings that are not approved
-    @tutorbookings_not_approved = @tutorbookings.where(approved: false)
-    # all the bookings that are approved
-    @tutorbookings_approved = @tutorbookings - @tutorbookings_not_approved
-    
+
   end
 
   def approval
-    @tutor_booking = TutorBooking.find(params[:booking])
     if @tutor_booking.approved
       @tutor_booking.update_attribute(:approved, false)
     else
       @tutor_booking.update_attribute(:approved, true)
     end
-    redirect_to desktop_url
+    redirect_to bookings_url
   end
 
   def home
@@ -56,6 +48,14 @@ class PagesController < ApplicationController
     unless current_user
       flash[:alert] = "You must be logged in to access this section"
       redirect_to new_user_session_url
+    end
+  end
+
+  def require_tutor
+    @tutor_booking = TutorBooking.find(params[:booking])
+    if @tutor_booking.tutor.id != current_user.id
+      flash[:alert] = "You are not allowed to perform this action"
+      redirect_to root_path
     end
   end
 

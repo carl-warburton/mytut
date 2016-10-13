@@ -20,7 +20,7 @@
         <p>Rate: <strong><%=number_to_currency(@booking.rates, unit:"$/hr", format:"%n %u") %> </strong></p>
         <p><%=@booking.length%> x <%=number_to_currency(@booking.rates, unit:"$/hr", format:"%n %u")%></p>
         <label>
-          <span class="heading">Amount: <%= number_to_currency(@booking.price, unit:"$")%></span>
+          <span class="heading">Amount: <%= number_to_currency(@booking.cost, unit:"$")%></span>
         </label>
         <%= form_tag charges_path, id:"stripeForm" do %>
           <article>
@@ -41,10 +41,7 @@
                   token: function (token, args) {
                     $("#stripeToken").val(token.id);
                     $("#stripeEmail").val(token.email);
-                    $("#stripeAmount").val(<%= @booking.price * 100 %>);
-                    // $("#stripeToken").value = token.id;
-                    // $("#stripeEmail").value = token.email;
-                    // $("#stripeAmount").value = <%= @booking.price * 100 %>;
+                    $("#stripeAmount").val(<%= @booking.cost * 100 %>);
                     $("#stripeForm").submit();
                   }
                 });
@@ -54,7 +51,7 @@
                   handler.open({
                     name: '<%= @booking.student_name %>',
                     description: 'Tutoring session with <%= @booking.tutor_name %>',
-                    amount: <%= @booking.price * 100 %>
+                    amount: <%= @booking.cost * 100 %>
                   });
                 e.preventDefault();
                 });

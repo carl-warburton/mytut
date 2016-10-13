@@ -31,8 +31,8 @@
 </p>
 
 <p>
-  <strong>Total Price:</strong>
-  <%= number_to_currency(@tutor_booking.price, unit:"$", format:"%n %u") %>
+  <strong>Total Cost:</strong>
+  <%= number_to_currency(@tutor_booking.cost, unit:"$", format:"%n %u") %>
 </p>
 
 <%= link_to 'Edit', edit_tutor_booking_path(@tutor_booking) %> |
