@@ -82,7 +82,7 @@ class TutorBookingsController < ApplicationController
 
       unless current_user.has_role? :student
         flash[:alert] = "You must be a student to request a booking."
-        redirect_to root_path
+        redirect_to :back
       end
     end
 end

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :require_login, only: [:bookings, :approval]
+  before_action :require_login, only: [:bookings, :approval, :bookings ]
   before_action :require_tutor, only: [:approval]
   # search tutors by name
   def search
@@ -34,10 +34,14 @@ class PagesController < ApplicationController
     else
       @tutor_booking.update_attribute(:approved, true)
     end
-    redirect_to bookings_url
+    redirect_to requests_url
   end
 
   def bookings
+    # find all the bookings that are approved mades by the current user( as a student)
+    @studentbookings = TutorBooking.where(student_id: current_user.id, approved: true).order(:date)
+    # find all the approved request bookings to the current_user (as a tutor)
+    @tutorbookings = TutorBooking.where(tutor_id: current_user.id, approved: true).order(:date)
   end
 
   def home
