@@ -1,5 +1,5 @@
 class TutorProfilesController < ApplicationController
-  before_action :require_login
+  before_action :authenticate_user!
   before_action :set_tutor_profile, only: [:show, :edit, :update, :destroy]
   before_action :check_tutor_profile, only: [:new, :create]
 
@@ -70,14 +70,6 @@ class TutorProfilesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_tutor_profile
       @tutor_profile = TutorProfile.find(params[:id])
-    end
-
-    # if not logged in the user is redirected to the log in page
-    def require_login
-      unless current_user
-        flash[:alert] = "You must be logged in to access this section"
-        redirect_to new_user_session_url
-      end
     end
 
     # a user can not create more that one profile

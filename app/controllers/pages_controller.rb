@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :require_login, only: [:bookings, :approval, :bookings ]
+  before_action :authenticate_user!, only: [:bookings, :approval, :bookings ]
   before_action :require_tutor, only: [:approval]
   # search tutors by name
   def search
@@ -48,13 +48,6 @@ class PagesController < ApplicationController
   end
 
   private
-
-  def require_login
-    unless current_user
-      flash[:alert] = "You must be logged in to access this section"
-      redirect_to new_user_session_url
-    end
-  end
 
   def require_tutor
     @tutor_booking = TutorBooking.find(params[:booking])

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_one :tutor_profile, dependent: :destroy
   has_one :student_profile, dependent: :destroy
 
+  # can have many bookings as a student or a tutor
   has_many :studentbookings, class_name: "TutorBooking", foreign_key: "student_id"
   has_many :tutorbookings, class_name: "TutorBooking", foreign_key: "tutor_id"
 

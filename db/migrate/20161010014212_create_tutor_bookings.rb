@@ -6,7 +6,7 @@ class CreateTutorBookings < ActiveRecord::Migration[5.0]
       t.date :date
       t.time :start_time
       t.time :end_time
-      t.boolean :approved
+      t.boolean :approved, :default => false
 
       t.timestamps
     end

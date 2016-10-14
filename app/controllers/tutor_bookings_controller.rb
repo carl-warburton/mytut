@@ -1,5 +1,5 @@
 class TutorBookingsController < ApplicationController
-  before_action :require_login
+  before_action :authenticate_user!, :require_student
   before_action :set_tutor_booking, only: [:show, :edit, :update, :destroy]
 
 
@@ -74,12 +74,7 @@ class TutorBookingsController < ApplicationController
       params.require(:tutor_booking).permit(:student_id, :tutor_id, :date, :start_time, :end_time)
     end
 
-    def require_login
-      unless current_user
-        flash[:alert] = "You must be logged in to access this section."
-        redirect_to new_user_session_url
-      end
-
+    def require_student
       unless current_user.has_role? :student
         flash[:alert] = "You must be a student to request a booking."
         redirect_to :back

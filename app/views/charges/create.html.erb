@@ -1,2 +1,2 @@
-<h2>Thank you for your payment of <%= number_to_currency(@amount, unit: "$") %>. It will be processed shortly.</h2>
-<%= link_to "Back to your desktop", desktop_path %>
+<h2>Thank you for your payment of <%= number_to_currency(@amount/100, unit: "$") %>. It will be processed shortly.</h2>
+<%= link_to "Back to your desktop", root_path %>
