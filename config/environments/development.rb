@@ -38,7 +38,7 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
 
   # Time zone
-  config.active_record.time_zone_aware_types = [:datetime, :time]
+  #config.active_record.time_zone_aware_types = [:datetime, :time]
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.

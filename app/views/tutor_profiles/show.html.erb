@@ -5,6 +5,9 @@
         <%= @tutor_profile.user.first_name.capitalize%> <%=@tutor_profile.user.last_name.capitalize%>
       </div>
       <div class="panel-body">
+        <% if @tutor_profile.user.avatar %>
+        <p><%= image_tag(@tutor_profile.user.avatar_url, class:"profile_pic")%></p>
+        <% end %>
         <p>
           <strong>Description:</strong>
           <%= @tutor_profile.description %>
@@ -43,6 +46,10 @@
         <p>
           <strong>Email:</strong>
           <%= @tutor_profile.user.email %>
+        </p>
+
+        <p>
+          <%=link_to "Message Me", conversations_path(sender_id: current_user.id, recipient_id: @tutor_profile.user.id), method: :post %>
         </p>
 
         <%= link_to 'Back', tutors_path %>

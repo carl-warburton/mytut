@@ -5,9 +5,9 @@
       <div class="panel-body">
         <p>You are <strong><%= @booking.student_name %></strong>.</p>
         <p>You are booking a tutoring session with <strong><%= @booking.tutor_name %></strong></p>
-        <p>on <strong><%= @booking.date.strftime("%d %B %y") %></strong></p>
-        <p>starting at <strong><%= @booking.start_time.strftime('%H:%M')%></strong>
-          and finishing at <strong><%= @booking.end_time.strftime("%H:%M")%></strong><p>
+        <p>on <strong><%= @booking.date %></strong></p>
+        <p>starting at <strong><%= @booking.start %></strong>
+          and finishing at <strong><%= @booking.end %></strong><p>
         <p>
       </div>
     </div>

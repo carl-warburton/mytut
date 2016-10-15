@@ -59,4 +59,4 @@ StudentProfile.create( description: "I am a year 12 highschool student. I need a
                         subjects: "Mathematics", year: "12", user_id: 5)
 
 TutorBooking.create(tutor_id: 3, student_id: 5, date:"2016-10-29", start_time: "2000-01-01 12:45:00", end_time: "2000-01-01 14:00:00", approved: false)
-TutorBooking.create(tutor_id: 2, student_id: 5, date:"2016-10-30", start_time: "2000-01-01 13:30:00", end_time: "2000-01-01 16:00:00", approved: false)
+TutorBooking.create(tutor_id: 2, student_id: 5, date:"2016-10-30", start_time: "2000-01-01 13:30:00", end_time: "2000-01-01 16:00:00", approved: true)

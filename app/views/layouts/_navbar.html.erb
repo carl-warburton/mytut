@@ -24,11 +24,11 @@
               <li class="dropdown-header">Requests</li>
               <li><%= link_to "View Requests", requests_path %></li>
             </ul>
-          <li><%= link_to "Messages", "#" %></li>
+          <li><%= link_to "Messages", conversations_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <%= current_user.first_name%>
-              <div class="user-profile-image"><%= image_tag(current_user.avatar_url, style:"height:26px ; width:26px") if current_user.avatar %></div>
+              <div class="user-profile-image"><%= image_tag(current_user.avatar_url, class:"small") if current_user.avatar %></div>
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">

@@ -1,30 +1,31 @@
-<div class="">
- <h3>Mailbox</h3>
- <div class="">
-  <div class="">
-   <% @conversations.each do |conversation| %>
-   <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-    <% if conversation.sender_id == current_user.id %>
-      <% recipient = User.find(conversation.recipient_id) %>
-    <% else %>
-      <% recipient = User.find(conversation.sender_id) %>
-    <% end %>
-    <%= link_to recipient.first_name, conversation_messages_path(conversation)%>
-   <% end %>
-  <% end %>
+
+ <div class="row">
+  <div class="col-sm-4">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3>Mailbox</h3>
+      </div>
+      <ul class="list-group">
+       <% @conversations.each do |conversation| %>
+         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+          <% if conversation.sender_id == current_user.id %>
+            <% recipient = User.find(conversation.recipient_id) %>
+          <% else %>
+            <% recipient = User.find(conversation.sender_id) %>
+          <% end %>
+            <li class="list-group-item">
+              <%= link_to conversation_messages_path(conversation) do %>
+                <%= image_tag(recipient.avatar_url, class:"small") if recipient.avatar %>
+                <%= recipient.full_name%>
+              <% end %>
+              <%= conversation.messages.last.message_time if conversation.messages.last %>
+            </li>
+         <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="col-sm-8">
+    
   </div>
  </div>
-</div>
-
-<div class="">
- <h3>All Users</h3>
-  <div class="">
-   <% @users.each do |user| %>
-    <% if user.id != current_user.id %>
-     <div class=”"">
-   <%= user.first_name %> <%= link_to "Message me!", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
- </div>
-  <% end %>
- <% end %>
- </div>
-</div>

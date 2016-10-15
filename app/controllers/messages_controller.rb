@@ -28,9 +28,20 @@ class MessagesController < ApplicationController
 
   def create
     @message = @conversation.messages.new(message_params)
+    @message.user_id = current_user.id
     if @message.save
       redirect_to conversation_messages_path(@conversation)
+    else
+      flash[:notice] = "Your message must contain at least a character"
+      redirect_to conversation_messages_path(@conversation)
     end
+  end
+
+  def destroy
+    @message = Message.find(params[:id])
+    @message.destroy
+    flash[:notice] = "Your message has been deleted"
+    redirect_to conversation_messages_path(@conversation)
   end
 
   private

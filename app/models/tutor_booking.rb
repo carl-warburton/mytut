@@ -7,27 +7,38 @@ class TutorBooking < ApplicationRecord
 
   # the rate in $/hr of the booking
   def rates
-    self.tutor.tutor_profile.rates
+    tutor.tutor_profile.rates
   end
 
   # the length of the tutoring bookings in hour
   def length
-    (self.end_time - self.start_time) / 3600
+    (end_time - start_time) / 3600
   end
 
   # find the price of the session rounded to the nearest 0.05
   def cost
-    ((self.rates * self.length) * 20).round.to_f / 20
+    ((rates * length) * 20).round.to_f / 20
   end
 
   # find tutor full name of booking
   def tutor_name
-    self.tutor.first_name + " " + self.tutor.last_name
+    tutor.first_name + " " + tutor.last_name
   end
 
   # find student full name of booking
   def student_name
-    self.student.first_name + " " + self.student.last_name
+    student.first_name + " " + student.last_name
   end
 
+  def date_time
+    date.strftime("%d %B %y")
+  end
+
+  def start
+    start_time.strftime('%H:%M')
+  end
+
+  def end
+    end_time.strftime("%H:%M")
+  end
 end
