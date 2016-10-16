@@ -1,23 +1,5 @@
-
-  <% if @over_ten %>
-    <%= link_to "Show Previous", "?m=all" %>
-  <% end %>
-
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <div><strong><%= message.user.first_name%></strong>
-      <%= message.message_time %></div>
-      <div><%= message.body %></div>
-      <%= link_to "delete", [@conversation, message], method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-  <% end %>
-
-<%= simple_form_for([@conversation, @message]) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :body %>
+<div class="panel panel-default">
+  <div class="panel-body">
+      <%= render 'messages' %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
-<% end %>
+</div>

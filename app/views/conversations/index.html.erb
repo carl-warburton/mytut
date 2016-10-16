@@ -14,7 +14,7 @@
             <% recipient = User.find(conversation.sender_id) %>
           <% end %>
             <li class="list-group-item">
-              <%= link_to conversation_messages_path(conversation) do %>
+              <%= link_to conversations_path(conversation: conversation.id) do %>
                 <%= image_tag(recipient.avatar_url, class:"small") if recipient.avatar %>
                 <%= recipient.full_name%>
               <% end %>
@@ -25,7 +25,14 @@
       </ul>
     </div>
   </div>
+
+<% if params[:conversation] %>
   <div class="col-sm-8">
-    
+    <div class="panel panel-default">
+      <div class="panel-body">
+          <%= render 'messages/messages' %>
+      </div>
+    </div>
   </div>
+ <% end %>
  </div>

@@ -1,0 +1,41 @@
+<% if @over_ten %>
+  <%= link_to "Show Previous", "?m=all" %>
+<% end %>
+
+<div class="row">
+<% @messages.each do |message| %>
+  <% if message.user_id == current_user.id %>
+    <div class="col-sm-7 col-sm-offset-5">
+      <div class="panel panel-primary text-right">
+        <div class="panel-body">
+          <p><span class="text-muted"><%= message.message_time %></span></p>
+          <div><%= message.body %></div>
+          <%= link_to "delete", [@conversation, message], method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+      </div>
+    </div>
+    <% else %>
+      <div class="col-sm-7">
+        <div class="panel panel-default text-left">
+          <div class="panel-body">
+            <p>
+              <strong><%= message.user.full_name%></strong>
+              <span class="text-muted"><%= message.message_time %></span>
+            </p>
+            <div><%= message.body %></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+<% end %>
+</div>
+
+<%= simple_form_for([@conversation, @conversation.messages.build]) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :body, label:false, placeholder:"Type a message" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Send",class:"btn-primary" %>
+  </div>
+<% end %>

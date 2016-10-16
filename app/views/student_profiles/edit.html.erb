@@ -1,6 +1,13 @@
 <h1>Editing Student Profile</h1>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <%= render 'form', student_profile: @student_profile %>
 
-<%= render 'form', student_profile: @student_profile %>
-
-<%= link_to 'Show', @student_profile %> |
-<%= link_to 'Back', student_profiles_path %>
+        <%= link_to 'Show', @student_profile %> |
+        <%= link_to 'Back', student_profiles_path %>
+      </div>
+    </div>
+  </div>
+</div>

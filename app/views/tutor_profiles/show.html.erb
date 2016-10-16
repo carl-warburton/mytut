@@ -49,7 +49,7 @@
         </p>
 
         <p>
-          <%=link_to "Message Me", conversations_path(sender_id: current_user.id, recipient_id: @tutor_profile.user.id), method: :post %>
+          <%=link_to "Message Me", conversations_path(sender_id: current_user.id, recipient_id: @tutor_profile.user.id), method: :post, class:"btn btn-default" %>
         </p>
 
         <%= link_to 'Back', tutors_path %>

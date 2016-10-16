@@ -15,11 +15,10 @@ class MessagesController < ApplicationController
 
     if @messages.last
       if @messages.last.user_id != current_user.id
-        @messages.last.read = true;
+        @messages.last.update_attribute(:read, true)
       end
     end
 
-    @message = @conversation.messages.new
   end
 
   def new
@@ -30,7 +29,7 @@ class MessagesController < ApplicationController
     @message = @conversation.messages.new(message_params)
     @message.user_id = current_user.id
     if @message.save
-      redirect_to conversation_messages_path(@conversation)
+      redirect_to conversations_path(conversation: @conversation)
     else
       flash[:notice] = "Your message must contain at least a character"
       redirect_to conversation_messages_path(@conversation)
@@ -41,7 +40,7 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.destroy
     flash[:notice] = "Your message has been deleted"
-    redirect_to conversation_messages_path(@conversation)
+    redirect_to :back
   end
 
   private
