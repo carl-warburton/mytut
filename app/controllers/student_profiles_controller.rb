@@ -1,5 +1,6 @@
 class StudentProfilesController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource param_method: :student_profile_params
   before_action :set_student_profile, only: [:show, :edit, :update, :destroy]
   before_action :check_student_profile, only: [:new, :create]
 

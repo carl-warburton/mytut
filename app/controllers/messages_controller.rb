@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  load_and_authorize_resource param_method: :message_params
   before_action :set_conversation
 
   def index

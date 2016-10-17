@@ -5,10 +5,24 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
-      can :read, :all
+      can :show, TutorProfile
     end
 
-    
+    if user.has_role? :student
+      can [:show], StudentProfile
+      can [:manage], StudentProfile, user_id: user.id
+      cannot [:index], StudentProfile
+      can [:create], TutorBooking, student_id: user.id
+      can [:create, :destroy], Message, user_id: user.id
+    end
+
+    if user.has_role? :tutor
+      can :manage, TutorProfile, user_id: user.id
+      can :read, StudentProfile
+      can [:create], TutorBooking, tutor_id: user.id
+      can [:create, :destroy], Message, user_id: user.id
+    end
+
     # The first argument to `can` is the action you are giving the user
     # permission to do.
     # If you pass :manage it will apply to every action. Other common actions

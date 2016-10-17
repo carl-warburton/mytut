@@ -1,4 +1,5 @@
 class TutorBookingsController < ApplicationController
+  load_and_authorize_resource param_method: :tutor_booking_params
   before_action :authenticate_user!, :require_student, :require_profile
   before_action :set_tutor_booking, only: [:show, :edit]
 
@@ -54,7 +55,7 @@ class TutorBookingsController < ApplicationController
     def require_student
       unless current_user.has_role? :student
         flash[:alert] = "You must be a student to request a booking."
-        redirect_to :back
+        redirect_to tutors_path
       end
     end
 

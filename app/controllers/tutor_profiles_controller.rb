@@ -1,5 +1,6 @@
 class TutorProfilesController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource param_method: :student_profile_params
   before_action :set_tutor_profile, only: [:show, :edit, :update, :destroy]
   before_action :check_tutor_profile, only: [:new, :create]
 
