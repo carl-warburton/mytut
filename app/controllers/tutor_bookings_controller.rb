@@ -31,6 +31,7 @@ class TutorBookingsController < ApplicationController
     @tutor_booking.student_id = current_user.id
     respond_to do |format|
       if @tutor_booking.save
+        BookingMailer.received(@tutor_booking).deliver_now # student receive a received mail
         format.html { redirect_to requests_path, notice: 'Tutor request has been sent.' }
         format.json { render :show, status: :created, location: @tutor_booking }
       else

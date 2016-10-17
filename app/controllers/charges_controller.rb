@@ -4,6 +4,7 @@ class ChargesController < ApplicationController
   end
 
   def create
+    @booking = TutorBooking.find(params[:booking_id])
     # Amount in cents
     @amount = params[:stripeAmount]
 
@@ -19,6 +20,8 @@ class ChargesController < ApplicationController
       :currency    => 'aud'
     )
 
+    BookingMailer.receipt(@booking).deliver_now
+    
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path

@@ -34,6 +34,8 @@
              <%= hidden_field_tag 'stripeToken' %>
              <%= hidden_field_tag 'stripeEmail' %>
              <%= hidden_field_tag 'stripeAmount' %>
+             <%= hidden_field_tag 'booking_id', @booking.id %>
+
 
              <script>
                 var handler = StripeCheckout.configure({
@@ -41,7 +43,7 @@
                   token: function (token, args) {
                     $("#stripeToken").val(token.id);
                     $("#stripeEmail").val(token.email);
-                    $("#stripeAmount").val(<%= @booking.cost * 100 %>);
+                    $("#stripeAmount").val(<%= @booking.cost * 100%>);
                     $("#stripeForm").submit();
                   }
                 });
