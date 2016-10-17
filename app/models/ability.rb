@@ -19,7 +19,6 @@ class Ability
     if user.has_role? :tutor
       can :manage, TutorProfile, user_id: user.id
       can :read, StudentProfile
-      can [:create], TutorBooking, tutor_id: user.id
       can [:create, :destroy], Message, user_id: user.id
     end
 

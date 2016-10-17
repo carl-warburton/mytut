@@ -12,7 +12,7 @@ class TutorBooking < ApplicationRecord
 
   # the length of the tutoring bookings in hour
   def length
-    (end_time - start_time) / 3600
+    (end_time - start_time)/3600
   end
 
   # find the price of the session rounded to the nearest 0.05

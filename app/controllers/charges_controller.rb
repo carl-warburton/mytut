@@ -21,7 +21,8 @@ class ChargesController < ApplicationController
     )
 
     BookingMailer.receipt(@booking).deliver_now
-    
+    @booking.update_attribute(:paid, true)
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path

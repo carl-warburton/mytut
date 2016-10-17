@@ -1,41 +1,41 @@
-<div class="row">
-  <div class="col-sm-2">
-    <h4>With Tutors:</h4>
-  </div>
-  <div class="col-sm-10">
-    <% if @studentbookings.empty? %>
-      <p>You have no tutoring sessions </p>
-    <% end %>
-    <div class="panel panel-default">
+<h2>Tutoring Requests:</h2>
+<% if @tutorbookings.empty? %>
+  <p>No students have requested your knowledge yet.</p>
+<% else %>
+  <div class="panel panel-default">
+    <div class="panel-heading">Bookings</div>
       <div class="panel-body">
         <table class="table datatable responsive no-wrap">
           <thead>
             <tr>
-              <th>Tutor</th>
+              <th>Student</th>
               <th>Date</th>
               <th>Start time</th>
               <th>End time</th>
               <th>Cost</th>
-              <th>Paid</th>
+              <th>Approved</th>
+              <th colspan="1"></th>
               <th>Requested on</th>
             </tr>
           </thead>
 
           <tbody>
-              <% @studentbookings.each do |booking| %>
+              <% @tutorbookings.each do |booking| %>
                 <tr>
                   <td>
-                    <%= booking.tutor_name %>
-                    <%= link_to "More Details", tutor_profile_url(booking.tutor.tutor_profile), class:"btn btn-sm btn-info" %>
+                    <%= booking.student_name %>
+                    <%= link_to "More Details", student_profile_url(booking.student.student_profile), class:"btn btn-sm btn-info" %>
                   </td>
                   <td><%= booking.date.strftime("%d %B %y") %></td>
                   <td><%= booking.start_time.strftime("%H:%M") %></td>
                   <td><%= booking.end_time.strftime("%H:%M") %></td>
                   <td><%= number_to_currency(booking.cost, unit:"$") %></td>
+                  <td><%= human_boolean(booking.approved) %></td>
                   <td>
-                    <%= human_boolean(booking.paid) %>
-                    <% if !!booking.paid == false %>
-                      <%= link_to "Make Payment", new_charge_path(booking: booking.id), class:"btn btn-sm btn-warning" %>
+                    <% if booking.approved %>
+                      <%= link_to "Disapprove", requests_url(booking: booking.id), method: :post, class:"btn btn-sm btn-danger" %>
+                    <% else %>
+                      <%= link_to "Approve", requests_url(booking: booking.id), method: :post, class:"btn btn-sm btn-success" %>
                     <% end %>
                   </td>
                   <td><%= booking.created_at.strftime("%d %B %y") %></td>
@@ -46,4 +46,4 @@
       </div>
     </div>
   </div>
-</div>
+<% end %>

@@ -1,0 +1,41 @@
+<h2>Your Requests:</h2>
+<% if @studentbookings.empty? %>
+  <p>You haven't requested any tutors.</p>
+<% else %>
+<div class="panel panel-default">
+  <div class="panel-heading">Bookings</div>
+    <div class="panel-body">
+      <table class="table datatable responsive no-wrap">
+        <thead>
+          <tr>
+            <th>Tutor</th>
+            <th>Date</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Cost</th>
+            <th>Approved</th>
+            <th>Requested on</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <% @studentbookings.each do |booking| %>
+              <tr>
+                <td>
+                  <%= booking.tutor_name %>
+                  <%= link_to "More Details", tutor_profile_url(booking.tutor.tutor_profile), class:"btn btn-sm btn-info" %>
+                </td>
+                <td><%= booking.date.strftime("%d %B %y") %></td>
+                <td><%= booking.start_time.strftime("%H:%M") %></td>
+                <td><%= booking.end_time.strftime("%H:%M") %></td>
+                <td><%= number_to_currency(booking.cost, unit:"$") %></td>
+                <td><%= human_boolean(booking.approved) %></td>
+                <td><%= booking.created_at.strftime("%d %B %y") %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<% end %>

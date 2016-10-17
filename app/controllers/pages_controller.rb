@@ -30,9 +30,9 @@ class PagesController < ApplicationController
 
   def approval
     if @tutor_booking.approved
-      @tutor_booking.update_attribute(:approved, false)
+      @tutor_booking.update(approved: false)
     else
-      @tutor_booking.update_attribute(:approved, true)
+      @tutor_booking.update(approved: true, paid: false)
     end
     redirect_to requests_url
   end

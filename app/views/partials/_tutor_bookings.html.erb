@@ -1,9 +1,12 @@
-<h2>Tutoring Requests:</h2>
-<% if @tutorbookings.empty? %>
-  <p>No students have requested your knowledge yet.</p>
-<% else %>
-  <div class="panel panel-primary">
-    <div class="panel-heading">Bookings</div>
+<div class="row">
+  <div class="col-sm-2">
+    <h4>With Students</h4>
+  </div>
+  <div class="col-sm-10">
+    <% if @tutorbookings.empty? %>
+      <p>You have no tutoring sessions </p>
+    <% end %>
+    <div class="panel panel-default">
       <div class="panel-body">
         <table class="table datatable responsive no-wrap">
           <thead>
@@ -13,8 +16,8 @@
               <th>Start time</th>
               <th>End time</th>
               <th>Cost</th>
-              <th>Approved</th>
-              <th colspan="1"></th>
+              <th>Paid</th>
+              <th>Requested on</th>
             </tr>
           </thead>
 
@@ -29,14 +32,8 @@
                   <td><%= booking.start_time.strftime("%H:%M") %></td>
                   <td><%= booking.end_time.strftime("%H:%M") %></td>
                   <td><%= number_to_currency(booking.cost, unit:"$") %></td>
-                  <td><%= human_boolean(booking.approved) %></td>
-                  <td>
-                    <% if booking.approved %>
-                      <%= link_to "Disapprove", requests_url(booking: booking.id), method: :post, class:"btn btn-sm btn-danger" %>
-                    <% else %>
-                      <%= link_to "Approve", requests_url(booking: booking.id), method: :post, class:"btn btn-sm btn-success" %>
-                    <% end %>
-                  </td>
+                  <td><%= human_boolean(booking.paid) %></td>
+                  <td><%= booking.created_at.strftime("%d %B %y") %></td>
                 </tr>
               <% end %>
           </tbody>
@@ -44,4 +41,4 @@
       </div>
     </div>
   </div>
-<% end %>
+</div>

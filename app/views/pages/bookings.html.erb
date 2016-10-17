@@ -1,35 +1,9 @@
-<h3>Your next tutoring sessions:</h3>
-<div class="row">
-  <% if current_user.has_role? :student %>
-    <div class="col-sm-6">
-      <% if @studentbookings.empty? %>
-        <p>You have no tutoring sessions </p>
-      <% end %>
-      <% @studentbookings.each do |booking| %>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <p>With tutor <strong><%= booking.tutor_name %></strong></p>
-            <p>on <strong><%= booking.date.strftime("%d %B %y") %></strong></p>
-            <p>from <strong><%= booking.start_time.strftime('%H:%M')%></strong>
-              to <strong><%= booking.end_time.strftime("%H:%M")%></strong><p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
+<h3>Your Bookings:</h3>
 
-  <% if current_user.has_role? :tutor%>
-    <div class="col-sm-6">
-      <% @tutorbookings.each do |booking| %>
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <p>With student <strong><%= booking.student_name %></strong></p>
-            <p>on <strong><%= booking.date.strftime("%d %B %y") %></strong></p>
-            <p>from <strong><%= booking.start_time.strftime('%H:%M')%></strong>
-              to <strong><%= booking.end_time.strftime("%H:%M")%></strong><p>
-          </div>
-        </div>
-    <% end %>
-    </div>
-  <% end %>
-</div>
+<% if current_user.has_role? :student %>
+  <%= render 'partials/student_bookings' %>
+<% end %>
+
+<% if current_user.has_role? :tutor%>
+  <%= render 'partials/tutor_bookings' %>
+<% end %>

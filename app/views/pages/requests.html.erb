@@ -1,9 +1,9 @@
 <h1>Requests</h1>
 
 <% if current_user.has_role? :student %>
-  <%= render 'partials/student_bookings' %>
+  <%= render 'partials/student_requests' %>
 <% end %>
 
 <% if current_user.has_role? :tutor %>
-  <%= render 'partials/tutor_bookings' %>
+  <%= render 'partials/tutor_requests' %>
 <% end %>
