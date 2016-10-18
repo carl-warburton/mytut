@@ -18,7 +18,7 @@ gem 'simple_form'
 # User can sign up and login
 gem 'devise'
 # to see nice flash messages
-gem 'growlyflash'
+#gem 'growlyflash'
 # add different roles for users
 gem "rolify"
 # add authorisation

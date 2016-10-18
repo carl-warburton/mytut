@@ -15,11 +15,6 @@ class TutorBookingsController < ApplicationController
   def show
   end
 
-  # GET /tutor_bookings/new
-  def new
-    @tutor_booking = TutorBooking.new
-  end
-
   # GET /tutor_bookings/1/edit
   def edit
   end
@@ -31,7 +26,8 @@ class TutorBookingsController < ApplicationController
     @tutor_booking.student_id = current_user.id
     respond_to do |format|
       if @tutor_booking.save
-        BookingMailer.received(@tutor_booking).deliver_now # student receive a received mail
+        #BookingMailer.received(@tutor_booking).deliver_now # student receives a received mail
+        #BookingMailer.response(@tutor_booking).deliver_now # tutor receives a received mail
         format.html { redirect_to requests_path, notice: 'Tutor request has been sent.' }
         format.json { render :show, status: :created, location: @tutor_booking }
       else

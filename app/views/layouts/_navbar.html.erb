@@ -36,11 +36,15 @@
                 <li class="dropdown-header">Tutor</li>
                 <li><%= link_to('Your Profile', current_user.tutor_profile)%></li>
                 <li><%= link_to('Edit Profile', edit_tutor_profile_path(current_user.tutor_profile))%></li>
+              <% elsif current_user.has_role? :tutor %>
+                <li><%= link_to('Create Tutor Profile', new_tutor_profile_path)%></li>
               <% end %>
               <% if current_user.student_profile %>
                 <li class="dropdown-header">Student</li>
                 <li><%= link_to('Your Profile', student_profile_path(current_user.student_profile))%></li>
                 <li><%= link_to('Edit Profile', edit_student_profile_path(current_user.student_profile))%></li>
+              <% elsif current_user.has_role? :student %>
+                <li><%= link_to("Create Student Profile", new_student_profile_path) %></li>
               <% end %>
               <li role="separator" class="divider"></li>
               <li class="dropdown-header">Account Settings</li>

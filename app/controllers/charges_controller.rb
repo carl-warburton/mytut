@@ -1,10 +1,11 @@
 class ChargesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_booking, :require_same_id
+
   def new
-    @booking = TutorBooking.find(params[:booking])
   end
 
   def create
-    @booking = TutorBooking.find(params[:booking_id])
     # Amount in cents
     @amount = params[:stripeAmount]
 
@@ -29,4 +30,15 @@ class ChargesController < ApplicationController
     flash[:notice] = "Please try again"
   end
 
+  private
+    def set_booking
+      @booking = TutorBooking.find(params[:booking])
+    end
+
+    def require_same_id
+      if current_user.id != @booking.student.id
+        flash[:danger]= "You are not allowed to access this page."
+        redirect_to root_path
+      end
+    end
 end

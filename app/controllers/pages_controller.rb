@@ -30,8 +30,10 @@ class PagesController < ApplicationController
 
   def approval
     if @tutor_booking.approved
+      flash[:danger]= "Request has been disapproved"
       @tutor_booking.update(approved: false)
     else
+      flash[:success]= "Request has been approved"
       @tutor_booking.update(approved: true, paid: false)
     end
     redirect_to requests_url
