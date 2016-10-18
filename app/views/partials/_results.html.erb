@@ -8,7 +8,7 @@
             <th>Tutor Name</th>
             <th>Subject</th>
             <th>Year</th>
-            <th>Rates</th>
+            <th>Rates $/hr</th>
             <th>Qualifications</th>
             <th colspan="1"></th>
           </tr>
@@ -21,7 +21,7 @@
                 <td><%= tutor_profile.user.first_name.capitalize %> <%= tutor_profile.user.last_name %></td>
                 <td><%= tutor_profile.subject %></td>
                 <td><%= tutor_profile.subject_year %></td>
-                <td><%= number_to_currency(tutor_profile.rates, unit:"$/hr", format:"%n %u") %></td>
+                <td><%= tutor_profile.rates %></td>
                 <td><%= tutor_profile.qualifications %></td>
                 <td><%= link_to "More Details", tutor_profile_path(tutor_profile.id), class:"btn btn-sm btn-info" %>
               </tr>
