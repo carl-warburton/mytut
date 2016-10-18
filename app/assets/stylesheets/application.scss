@@ -18,6 +18,8 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
 
  body {
    padding-top: 70px;
@@ -74,4 +76,9 @@
     font: bold 16px sans-serif;
     padding: 55px 50px;
     margin-top: 80px;
+}
+
+/* icon */
+i {
+  color: #337ab7;
 }

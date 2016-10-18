@@ -13,6 +13,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # User bootstrap for style
 gem 'bootstrap-sass', '~> 3.3.6'
+# Use of icons
+gem 'font-awesome-sass', '~> 4.6.2'
 # User simple form gem
 gem 'simple_form'
 # User can sign up and login

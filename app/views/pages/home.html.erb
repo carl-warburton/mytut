@@ -3,8 +3,9 @@
 
 <!-- Main component for a primary marketing message or call to action -->
 <div class="jumbotron">
-  <h1>Welcome</h1>
-  <p>My Tut is a platform where tutors post their profiles. Then students are able to choose the tutors and book a tutoring session online.</p>
+  <h1><%= icon('book')%> Welcome</h1>
+  <p>My Tut is a platform where Tutors can interact with their Students online.</p>
+  <p>Students are able to choose from several tutors and request an online tutoring session.</p>
   <% if current_user %>
     <% if current_user.has_role? :tutor %>
       <% if current_user.tutor_profile %>
@@ -27,5 +28,25 @@
       <%= link_to "Log In", new_user_session_path, class:"btn btn-lg btn-primary"%>
     </p>
   <% end %>
-
+</div>
+<div class="description text-center">
+  <h1>Why use MyTUT?</h1>
+  <div class="row">
+    <div class="col-sm-3">
+      <%=icon('rocket', class:"fa-5x")%>
+      <h3>Fast</h3>
+    </div>
+    <div class="col-sm-3">
+      <%=icon('thumbs-o-up', class:"fa-5x")%>
+      <h3>Easy To Use</h3>
+    </div>
+    <div class="col-sm-3">
+      <%=icon('universal-access', class:"fa-5x")%>
+      <h3>Study Anywhere</h3>
+    </div>
+    <div class="col-sm-3">
+      <%=icon('lock', class:"fa-5x")%>
+      <h3>Safe</h3>
+    </div>
+  </div>
 </div>
