@@ -19,6 +19,8 @@ gem 'font-awesome-sass', '~> 4.6.2'
 gem 'simple_form'
 # User can sign up and login
 gem 'devise'
+# Sign Up using Facebook
+gem 'omniauth-facebook'
 # to see nice flash messages
 #gem 'growlyflash'
 # add different roles for users

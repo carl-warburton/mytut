@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :student_profiles
   resources :tutor_profiles
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" , registrations: 'users/registrations' }
+
 
   root 'pages#home'
   get '/tutors', to: 'pages#tutors'

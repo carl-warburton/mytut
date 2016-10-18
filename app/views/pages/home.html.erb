@@ -9,11 +9,11 @@
   <% if current_user %>
     <%= link_to "View your Bookings", bookings_path, class: "btn btn-lg btn-primary"%>
     <% if (current_user.has_role? :tutor) && !current_user.tutor_profile.present? %>
-      <p><%= link_to "Create Tutor Profile", new_tutor_profile_path, class: "btn btn-lg btn-primary" %></p>
+      <h2><%= link_to "Create Tutor Profile", new_tutor_profile_path, class: "btn btn-lg btn-primary" %></h2>
     <% end %>
 
     <% if (current_user.has_role? :student) && !current_user.student_profile.present? %>
-      <p><%= link_to "Create Student Profile", new_student_profile_path, class: "btn btn-lg btn-success" %></p>
+      <h2><%= link_to "Create Student Profile", new_student_profile_path, class: "btn btn-lg btn-success" %></h2>
     <% end %>
 
   <% else %>
