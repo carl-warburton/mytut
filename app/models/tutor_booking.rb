@@ -5,11 +5,6 @@ class TutorBooking < ApplicationRecord
 
   validates :date, presence: true
 
-  # the rate in $/hr of the booking
-  def rates
-    tutor.tutor_profile.rates
-  end
-
   # the length of the tutoring bookings in hour
   def length
     (end_time - start_time)/3600
@@ -17,7 +12,7 @@ class TutorBooking < ApplicationRecord
 
   # find the price of the session rounded to the nearest 0.05
   def cost
-    ((rates * length) * 20).round.to_f / 20
+    ((rate * length) * 20).round.to_f / 20
   end
 
   # find tutor full name of booking

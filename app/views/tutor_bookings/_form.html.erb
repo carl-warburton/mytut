@@ -5,7 +5,9 @@
                 end_year: Date.today.year + 2, order:[:day, :month, :year], required: true %>
     <%= f.input :start_time, as: :time, minute_step: 15 %>
     <%= f.input :end_time, as: :time, minute_step: 15 %>
+    <%= f.hidden_field :rate, value: @tutor_profile.rates %>
     <%= f.hidden_field :tutor_id, value: @tutor_profile.user.id %>
+
   </div>
 
   <div class="form-actions">

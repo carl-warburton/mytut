@@ -46,7 +46,7 @@ class TutorBookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tutor_booking_params
-      params.require(:tutor_booking).permit(:student_id, :tutor_id, :date, :start_time, :end_time)
+      params.require(:tutor_booking).permit(:student_id, :tutor_id, :date, :start_time, :end_time, :rate)
     end
 
     def require_student

@@ -7,20 +7,15 @@
   <p>My Tut is a platform where Tutors can interact with their Students online.</p>
   <p>Students are able to choose from several tutors and request an online tutoring session.</p>
   <% if current_user %>
-    <% if current_user.has_role? :tutor %>
-      <% if current_user.tutor_profile %>
-        <%= link_to "See your bookings and Teach", bookings_path, class: "btn btn-lg btn-primary"%>
-      <% else %>
-        <p><%= link_to "Create Tutor Profile", new_tutor_profile_path, class: "btn btn-lg btn-primary" %></p>
-      <% end %>
+    <%= link_to "View your Bookings", bookings_path, class: "btn btn-lg btn-primary"%>
+    <% if (current_user.has_role? :tutor) && !current_user.tutor_profile.present? %>
+      <p><%= link_to "Create Tutor Profile", new_tutor_profile_path, class: "btn btn-lg btn-primary" %></p>
     <% end %>
-    <% if current_user.has_role? :student %>
-      <% if current_user.student_profile %>
-        <%= link_to "See your bookings and Learn", bookings_path , class: "btn btn-lg btn-primary"%>
-      <% else %>
-        <p><%= link_to "Create Student Profile", new_student_profile_path, class: "btn btn-lg btn-primary" %></p>
-      <% end %>
-    <%end %>
+
+    <% if (current_user.has_role? :student) && !current_user.student_profile.present? %>
+      <p><%= link_to "Create Student Profile", new_student_profile_path, class: "btn btn-lg btn-success" %></p>
+    <% end %>
+
   <% else %>
     <h3>Get Started!</h3>
     <p>

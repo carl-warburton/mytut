@@ -17,8 +17,8 @@
       <div class="panel-body">
         <p class="heading">Payment</p>
         <p>Length of session: <strong><%=@booking.length%> Hours</strong></p>
-        <p>Rate: <strong><%=number_to_currency(@booking.rates, unit:"$/hr", format:"%n %u") %> </strong></p>
-        <p><%=@booking.length%> x <%=number_to_currency(@booking.rates, unit:"$/hr", format:"%n %u")%></p>
+        <p>Rate: <strong><%=number_to_currency(@booking.rate, unit:"$/hr", format:"%n %u") %> </strong></p>
+        <p><%=@booking.length%> x <%=number_to_currency(@booking.rate, unit:"$/hr", format:"%n %u")%></p>
         <label>
           <span class="heading">Amount: <%= number_to_currency(@booking.cost, unit:"$")%></span>
         </label>
