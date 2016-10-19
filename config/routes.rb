@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" , registrations: 'users/registrations' }
 
-
+  scope "/admin" do
+    resources :users
+  end
   root 'pages#home'
   get '/tutors', to: 'pages#tutors'
   post '/tutors', to: 'pages#search'

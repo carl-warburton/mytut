@@ -6,8 +6,6 @@ class Ability
       can :manage, :all
     else
       can :show, TutorProfile
-      cannot [:index], StudentProfile
-      cannot [:index], TutorProfile
       can [:create, :destroy], Message, user_id: user.id
     end
 
@@ -18,9 +16,8 @@ class Ability
     end
 
     if user.has_role? :tutor
-      can :manage, TutorProfile, user_id: user.id
-      can :read, StudentProfile
-      
+      can [:create,:update,:destroy], TutorProfile, user_id: user.id
+      can :show, StudentProfile
     end
 
     # The first argument to `can` is the action you are giving the user
