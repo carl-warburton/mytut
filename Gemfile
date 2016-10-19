@@ -23,6 +23,8 @@ gem 'devise'
 gem 'omniauth-facebook'
 # to see nice flash messages
 #gem 'growlyflash'
+# generate ERD
+gem "rails-erd"
 # add different roles for users
 gem "rolify"
 # add authorisation
