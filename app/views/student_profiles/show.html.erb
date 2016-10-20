@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-sm-4">
-    <div class="panel panel-default">
+  <div class="col-sm-3">
+    <div class="panel panel-info">
       <div class="panel-body">
         <%= image_tag(@student_profile.user.avatar_url, class:"profile-pic") if @student_profile.user.avatar %>
         <p>
@@ -21,7 +21,10 @@
   </div>
 </div>
   <div class="col-sm-6">
-    <div class="panel panel-default">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        Profile
+      </div>
       <div class="panel-body">
 
         <p>

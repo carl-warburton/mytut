@@ -1,8 +1,29 @@
 <div class="row">
-  <div class="col-sm-8">
+  <div class="col-sm-3">
+    <div class="panel panel-info">
+      <div class="panel-body">
+        <%= image_tag(@tutor_profile.user.avatar_url, class:"profile-pic") if @tutor_profile.user.avatar %>
+        <p>
+          <strong>Name:</strong>
+          <%= @tutor_profile.user.full_name %>
+        </p>
+        <p>
+          <strong>Phone number:</strong>
+          <%= @tutor_profile.user.phone_number %>
+        </p>
+
+        <p>
+          <strong>Email:</strong>
+          <%= @tutor_profile.user.email %>
+        </p>
+      <%= link_to "Message Me", conversations_path(sender_id: current_user.id, recipient_id: @tutor_profile.user.id), method: :post, class:"btn btn-primary"%>
+    </div>
+  </div>
+  </div>
+  <div class="col-sm-6">
     <div class="panel panel-info">
       <div class="panel-heading">
-        <%= @tutor_profile.user.first_name.capitalize%> <%=@tutor_profile.user.last_name.capitalize%>
+        Profile
       </div>
       <div class="panel-body">
         <% if @tutor_profile.user.avatar %>
@@ -38,26 +59,11 @@
           <%= @tutor_profile.qualifications %>
         </p>
 
-        <p>
-          <strong>Phone Number:</strong>
-          <%= @tutor_profile.user.phone_number %>
-        </p>
-
-        <p>
-          <strong>Email:</strong>
-          <%= @tutor_profile.user.email %>
-        </p>
-
-        <p>
-          <%=link_to "Message Me", conversations_path(sender_id: current_user.id, recipient_id: @tutor_profile.user.id), method: :post, class:"btn btn-default" %>
-        </p>
-
-        <%= link_to 'Back', tutors_path %>
       </div>
     </div>
   </div>
 
-  <div class="col-sm-4">
+  <div class="col-sm-3">
     <div class="panel panel-default">
       <div class="panel-body">
         <%= render 'tutor_bookings/form' %>
