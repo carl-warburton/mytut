@@ -30,7 +30,7 @@
               </div>
             <% end %>
           </article>
-          <button id="stripe-button" class="btn btn-primary">Pay Now</button>
+          <button id="stripe-button" class="btn btn-warning">Pay Now</button>
              <%= hidden_field_tag 'stripeToken' %>
              <%= hidden_field_tag 'stripeEmail' %>
              <%= hidden_field_tag 'stripeAmount'%>
@@ -39,7 +39,7 @@
 
              <script>
                 var handler = StripeCheckout.configure({
-                  image:"https://stripe.com/img/documentation/checkout/marketplace.png",
+                  image:"https://res.cloudinary.com/liptonite24/image/upload/v1476939903/mytut125_ieiqvz.png",
                   currency: "aud",
                   key: "<%= Rails.configuration.stripe[:publishable_key] %>",
                   token: function (token, args) {

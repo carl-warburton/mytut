@@ -21,8 +21,10 @@ class ChargesController < ApplicationController
       :currency    => 'aud'
     )
 
-    #BookingMailer.receipt(@booking).deliver_now
-    @booking.update_attribute(:paid, true)
+    if charge[:paid]
+      #BookingMailer.receipt(@booking).deliver_now
+      @booking.update_attribute(:paid, true)
+    end
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
