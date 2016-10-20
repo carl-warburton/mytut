@@ -36,4 +36,9 @@ class TutorBooking < ApplicationRecord
   def end
     end_time.strftime("%H:%M")
   end
+
+  # show a quick label of the booking
+  def label
+    student_name + " | " + date_time + " | " + start
+  end
 end

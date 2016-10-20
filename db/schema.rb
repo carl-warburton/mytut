@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161018044218) do
+ActiveRecord::Schema.define(version: 20161019235220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 20161018044218) do
     t.index ["user_id"], name: "index_tutor_bookings_on_user_id", using: :btree
   end
 
+  create_table "tutor_classes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "password_digest"
+    t.integer  "tutor_booking_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["tutor_booking_id"], name: "index_tutor_classes_on_tutor_booking_id", using: :btree
+  end
+
   create_table "tutor_profiles", force: :cascade do |t|
     t.text     "description"
     t.string   "subject"
@@ -114,5 +123,6 @@ ActiveRecord::Schema.define(version: 20161018044218) do
   end
 
   add_foreign_key "student_profiles", "users"
+  add_foreign_key "tutor_classes", "tutor_bookings"
   add_foreign_key "tutor_profiles", "users"
 end

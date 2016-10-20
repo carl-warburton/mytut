@@ -15,7 +15,7 @@
             <%= f.input :avatar, label_html: {class: "col-sm-3"}, label:"Picture", as: :file %>
             <%= f.hidden_field :avatar_cache %>
             <%= f.input :email, required: true, autofocus: true %>
-            <%= f.association :roles, label_html: {class: "col-sm-3"}, label:"What are you?", as: :check_boxes, collection: [Role.find(1), Role.find(2)] %>
+            <%= f.association :roles, label_html: {class: "col-sm-3"}, label:"What are you?", as: :check_boxes, collection: Role.where('name <>?', 'admin'), label_method: :label_name  %>
             <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
             <%= f.input :password_confirmation, required: true, label: "Confirm Password" %>
           </div>

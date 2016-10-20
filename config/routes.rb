@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :tutor_classes
   resources :tutor_bookings
   resources :student_profiles
   resources :tutor_profiles

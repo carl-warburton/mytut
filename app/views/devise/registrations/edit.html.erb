@@ -22,8 +22,8 @@
             </div>
             <%= f.hidden_field :avatar_cache %>
 
-
-            <%= f.association :roles, label_html: {class: "col-sm-3"}, as: :check_boxes, collection: [Role.find(1), Role.find(2)] %>
+            <%= f.association :roles, label_html: {class: "col-sm-3"}, label:"What are you?",
+            as: :check_boxes, collection: Role.where('name <>?', 'admin'), label_method: :label_name  %>
 
             <%= f.input :date_of_birth, wrapper: :horizontal_form, as: :date, start_year: Date.today.year,
                                     end_year: Date.today.year - 70, discard_day: false,

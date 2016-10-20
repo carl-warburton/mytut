@@ -10,4 +10,12 @@ class Role < ApplicationRecord
             :allow_nil => true
 
   scopify
+
+  def label_name
+    if name == "student"
+      "A Student"
+    elsif name == "tutor"
+      "A Tutor"
+    end
+  end
 end
