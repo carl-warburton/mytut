@@ -63,8 +63,8 @@ Education(Rules to follow as a tutor) -> Create Profile -> Application Review
 * Trello link: https://trello.com/b/GC0NBngH/mytut
 
 - Entity Relationship Diagram
-* Initial ERD: assets/images/ERDmyTUT.png
-* Made by rails-erd: erd.pdf
+  * Initial ERD: assets/images/ERDmyTUT.png
+  * Made by rails-erd: erd.pdf
 
 ## Project Estimation
 
