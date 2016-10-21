@@ -4,14 +4,15 @@
 
 - [x] Ruby 2.3.1 and Rails 5.0
 - Gems used:
-* Rolify
-* Boostrap
-* Font-awesome
-* simple_form
-* devise
-* carrierwave
-* cloudinary
-* cancancan
+  * Rolify
+  * Boostrap
+  * Font-awesome
+  * simple_form
+  * devise
+  * carrierwave
+  * cloudinary
+  * cancancan
+  * stripe
 
 ```
 bundle
