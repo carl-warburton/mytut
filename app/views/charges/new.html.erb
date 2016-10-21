@@ -55,7 +55,8 @@
                   handler.open({
                     name: '<%= @booking.tutor_name %>',
                     description: 'Tutoring session with <%= @booking.student_name %>',
-                    amount: <%= @booking.cost * 100 %>
+                    amount: <%= @booking.cost * 100 %>,
+                    email: '<%=@booking.student.email%>'
                   });
                 e.preventDefault();
                 });
