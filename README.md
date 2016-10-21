@@ -1,5 +1,8 @@
 # myTUT Rails Application - Coder Factory Project 2
 
+Deployed on Heroku:
+https://mytut101.herokuapp.com/
+
 ## Application Setup
 
 - [x] Ruby 2.3.1 and Rails 5.0
